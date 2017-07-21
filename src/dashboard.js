@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import './animate.css'
+//import './animate.css'
 import Login from './login.js'
 
 const url = 'http://applicationdashboard.us-east-1.elasticbeanstalk.com/';
