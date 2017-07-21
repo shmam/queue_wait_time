@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-//import './animate.css'
+import './animate.css'
 import Login from './login.js'
 
 const url = 'http://applicationdashboard.us-east-1.elasticbeanstalk.com/';
@@ -46,7 +46,7 @@ class Dashboard extends Component {
               <div>
               <QueuePosition provider_id={this.state.information[0].provider_id}/>
               <CurrentWaitTime apptTime={this.state.information[0].display_start_time} provider_id={this.state.information[0].provider_id} expected_start_time={this.state.information[0].expected_start_time} />
-              <button onClick={() => this.buttonReload()}>refresh</button>
+              <button >refresh</button>
               </div>
           );
       }
