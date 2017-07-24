@@ -46,7 +46,8 @@ class Dashboard extends Component {
               <div>
               <QueuePosition provider_id={this.state.information[0].provider_id}/>
               <CurrentWaitTime apptTime={this.state.information[0].display_start_time} provider_id={this.state.information[0].provider_id} expected_start_time={this.state.information[0].expected_start_time} />
-              <button >refresh</button>
+              <button //onClick={() => this.buttonReload()}
+              >refresh</button>
               </div>
           );
       }
