@@ -26,7 +26,9 @@ class Login extends Component {
   }
 
 
-  handleChange(event) {
+  handleChange(event) 
+  {
+    
     var val = event.target.value;
     this.setState({value: val});
     this.handleSubmit(val);
@@ -55,7 +57,7 @@ class Login extends Component {
                 <form className="form" onSubmit={this.handleSubmit}><strong>
                   PATIENT ID:</strong><br/><input className="patient_id" type="text" placeholder="####" value={this.state.value} onChange={this.handleChange} name="PatientID"/><br/>
                 
-                <button className="submit-button" type="submit" value="Submit"onClick={() => {
+                <button className="submit-button" id = "dp" type="submit" value="Submit"onClick={() => {
                   this.setState({display:"dash"});
                   }}>  SUBMIT </button>
                 </form> 
@@ -83,21 +85,24 @@ class Dropdown extends Component {
   constructor() {
     super();
     this.state = {
-
+        childVisible: false
     }
   }
+    
   render() {
     return (
-      <div className="dropdown">
-        <button className='dropbtn'>CLINIC</button>
-          <div className="dropdown-content">
-            <a href="#"><b>UNC RESARCH HOSPITAL</b></a>
-            <a href="#"><b>DUKE MEDICAL FACILITY</b></a>
-            <a href="#"><b>VT BOJANGLE CENTER</b></a>
-          </div> {/* end of dropdown content */}
+      <div className="">
+          <select>
+            <option href="#" onClick={() => this.onClick()}><b>UNC RESARCH HOSPITAL</b></option>
+            <option href="#"  ><b>DUKE MEDICAL FACILITY</b></option>
+            <option href="#" ><b>VT BOJANGLE CENTER</b></option>
+          </select> {
+          }
       </div> // end of dropdown div
     );
   }
+ 
+
 }
 
 

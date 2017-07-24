@@ -195,7 +195,8 @@ class CurrentWaitTime extends Component{
             }
         })    
     }
-
+  
+  
     refreshTime(){
 
         var today= new Date();
