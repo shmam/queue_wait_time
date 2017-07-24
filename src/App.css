@@ -143,14 +143,14 @@ html {
   }
 
 /* Show the dropdown menu on hover */
-.dropdown:active .dropdown-content {
+.dropdown:hover .dropdown-content {
    width: 300px;
     display: block;
     text-align: center;
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:active .dropbtn {
+.dropdown:hover .dropbtn {
     background-color: #408c99;
     text-align: center;
 }
