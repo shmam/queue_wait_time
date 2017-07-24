@@ -245,7 +245,17 @@ class CurrentWaitTime extends Component{
             hours=hours-12;
             ampm="pm";
         }
-        finalTime= String(hours)+":"+String(minutes)+ampm
+
+        console.log(minutes)
+        if(minutes === '0'){
+            finalTime = String(hours)+":00"+ampm
+            console.log("here")
+        }
+
+    
+        else{
+            finalTime = String(hours)+":"+String(minutes)+ampm
+        }
         
         return(
             <div className="CurrentWaitTime animated fadeInLeft">
