@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import logo from './icon.png';
+import Dashboard from './dashboard.js'
+import './dashboard.css'
 
 /**
  * Title
@@ -12,22 +14,66 @@ import logo from './icon.png';
 
 class Login extends Component {
 
+  constructor(props){
+    super(props);
+    this.state = {
+      display: 'login',
+      value: '',
+    }
+    this.controller=this.controller.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+
+  handleChange(event) {
+    var val = event.target.value;
+    this.setState({value: val});
+    this.handleSubmit(val);
+    
+  }
+
+  handleSubmit(value) {
+    this.setState({value:value});
+    
+    
+
+  }
+
+  controller(){
+    if(this.state.display === 'login'){
+      return(<div className="App">
+              <div className="App-header">
+                <img src={logo} className="App-logo" alt="logo"/> {/*Optum Logo */}
+                <h2>OPTUMISTICS</h2>
+                
+                
+              </div> {/* end of App-header */}
+
+              <div className="App-body">
+                <Dropdown/>
+                <form className="form" onSubmit={this.handleSubmit}><strong>
+                  PATIENT ID:</strong><br/><input className="patient_id" type="text" placeholder="####" value={this.state.value} onChange={this.handleChange} name="PatientID"/><br/>
+                
+                <button className="submit-button" type="submit" value="Submit"onClick={() => {
+                  this.setState({display:"dash"});
+                  }}>  SUBMIT </button>
+                </form> 
+              </div> {/* end of App-header div */}
+      </div> // end of App div
+      );
+    }
+    else if(this.state.display === 'dash'){
+      return(
+        <Dashboard patient_id={this.state.value}/>
+      );
+
+    }
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/> {/*Optum Logo */}
-          <h2>OPTUMISTICS</h2>
-          
-          
-        </div> {/* end of App-header */}
-
-        <div className="App-body">
-          <Dropdown/>
-          <Textbox/>
-          <button className="submit-button">  SUBMIT </button>
-        </div> {/* end of App-header div */}
-      </div> // end of App div
+      this.controller()
     );
   }
 }
@@ -54,21 +100,7 @@ class Dropdown extends Component {
   }
 }
 
-class Textbox extends Component {
-  constructor() {
-    super();
-    this.state = {
 
-    }
-  }
-  render() {
-    return (
-      <form className="form"><strong>
-        PATIENT ID:</strong><br/><input className="patient_id" type="text" placeholder="Patient ID #" name="PatientID"/><br/>
-      </form> // end of form
-    );
-  }
-}
 
 
 

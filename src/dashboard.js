@@ -12,6 +12,7 @@ class Dashboard extends Component {
       super(props);
       this.state = {
           today: false,
+          pID: this.props.patient_id,
           information:[{
               expected_start_time: '',
               display_start_time: '',
@@ -58,7 +59,7 @@ class Dashboard extends Component {
 
   componentDidMount(){
       var dataObj = null; 
-      fetch(url + 'queue/present/appointment_information/1160')
+      fetch(url + 'queue/present/appointment_information/' + this.state.pID)
       .then((resp) => resp.json())
       .then(data => {
           if(parseInt(data[0].expected_start_time.substring(0,2)) > 12){
@@ -77,7 +78,7 @@ class Dashboard extends Component {
 
   buttonReload(){
       var dataObj = null; 
-      fetch(url + 'queue/present/appointment_information/1160')
+      fetch(url + 'queue/present/appointment_information/' + this.state.pID)
       .then((resp) => resp.json())
       .then(data => {
           if(parseInt(data[0].expected_start_time.substring(0,2)) > 12){

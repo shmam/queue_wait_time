@@ -32,7 +32,7 @@ html {
 }
 
 .App-body{
-  margin-top: 5%;
+  
   width: 350px;
   height: 310px;
   background: rgba(211, 211, 211, 0.5);
@@ -175,3 +175,13 @@ html {
   font-size: 24px;
 }
 
+button.dropbtn{
+  margin-top: 0;
+}
+
+input.patient_id{
+  padding: 10px;
+  font-size: 20px;
+
+  text-align: center;
+}
