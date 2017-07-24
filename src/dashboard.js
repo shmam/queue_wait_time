@@ -59,7 +59,7 @@ class Dashboard extends Component {
 
   componentDidMount(){
       var dataObj = null; 
-      fetch(url + 'queue/present/appointment_information/' + this.state.pID)
+      fetch(url + 'queue/present/appointment_information/' + this.state.pID, {mode:'no-cors'})
       .then((resp) => resp.json())
       .then(data => {
           if(parseInt(data[0].expected_start_time.substring(0,2)) > 12){
