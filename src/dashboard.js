@@ -47,7 +47,7 @@ class Dashboard extends Component {
               <div>
               <QueuePosition provider_id={this.state.information[0].provider_id}/>
               <CurrentWaitTime apptTime={this.state.information[0].display_start_time} provider_id={this.state.information[0].provider_id} expected_start_time={this.state.information[0].expected_start_time} />
-              <button //onClick={() => this.buttonReload()}
+              <button onClick={() => this.buttonReload()}
               >refresh</button>
               </div>
           );
@@ -67,7 +67,10 @@ class Dashboard extends Component {
               x = (String(x) + data[0].expected_start_time.substring(2,5) + "pm")
               data[0].display_start_time = x;
           }
-          else{
+          else if(parseInt(data[0].expected_start_time.substring(0,2)) === 12){
+              data[0].display_start_time = data[0].expected_start_time.substring(0,5) + 'pm'
+          }
+          else if(parseInt(data[0].expected_start_time.substring(0,2)) < 12){
               data[0].display_start_time = data[0].expected_start_time.substring(0,5) + 'am'
           }
           this.setState({information:data});
@@ -224,11 +227,21 @@ class CurrentWaitTime extends Component{
         var leftover=0;
         var finalTime;
         var ampm;
+        if(this.props.apptTime.length === 6){
+            minutes=parseInt((this.props.apptTime).substring(2,4));
+            hours= parseInt((this.props.apptTime).substring(0,1));
+            ampm=(this.props.apptTime).substring(4,6);
+        }
+        else if(this.props.apptTime.length === 7){
+            minutes=parseInt((this.props.apptTime).substring(3,5));
+            hours= parseInt((this.props.apptTime).substring(0,2));
+            ampm=(this.props.apptTime).substring(5,7);
+        }
 
-        minutes=parseInt((this.props.apptTime).substring(3,5));
-        hours= parseInt((this.props.apptTime).substring(0,2));
-        ampm=(this.props.apptTime).substring(5,7);
-        var sum= minutes+ this.state.waittime;
+        console.log(hours + ":" + minutes + " " + ampm)
+        var sum= minutes + this.state.waittime;
+
+        console.log(sum)
         if(sum>60){
             leftover=sum-60;
             hours++;
@@ -241,22 +254,19 @@ class CurrentWaitTime extends Component{
         }else{
             minutes=sum;
         }
-
-        if(hours>12){
+        if(hours === 12){
+            ampm="pm";
+        }
+        else if(hours>12){
             hours=hours-12;
             ampm="pm";
         }
 
-        console.log(minutes)
-        if(minutes === '0'){
-            finalTime = String(hours)+":00"
-            console.log("here")
+        if(minutes === "0"){
+            finalTime = String(hours)+":00" + ampm
         }
-
-    
-        else{
-            finalTime = String(hours)+":"+String(minutes)
-        }
+        else{finalTime = String(hours)+":"+String(minutes) + ampm}
+        
         
         return(
             <div className="CurrentWaitTime animated fadeInLeft">
@@ -284,7 +294,7 @@ class PhoneRegister extends Component{
         return(
             <div className="PhoneRegister">   
                 
-                <label>Sign up for Text Alerts:</label><input type="number" placeholder="0000000000" maxLength="10"/>
+                <label>Sign up for Text Alerts:</label><input  placeholder="0000000000" maxLength="10"/>
             </div>
         );
     }
