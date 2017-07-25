@@ -207,3 +207,15 @@ button:focus{
     padding: 0px;
     padding-top: 0px;
 }
+
+.sent{
+    margin-top: 0px;
+    color: #00B16A;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.sent p{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}

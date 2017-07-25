@@ -300,12 +300,52 @@ class PhoneRegister extends Component{
     }
 
     ajaxSendTheNumber(){
-        console.log(this.state.numberVal)
-        this.setState({
-            numberVal: "", 
-            display: 'sent'
-        })
+        if(this.state.numberVal.length === 10){
+            console.log(this.state.numberVal)
+            this.setState({
+                numberVal: "", 
+                display: 'sending'
+            })
+        }
+        else{
 
+        }
+
+
+    }
+
+    screenControl(){
+        if(this.state.display === 'notSent'){
+            return(
+                <div>
+                <label>Sign up for Text Alerts:</label>
+
+                <table>
+                    <tr>
+                        <th><input  placeholder="000-000-0000" maxLength="10" onChange={this.handleChange} value={this.state.numberVal}/></th>
+                        <th><button onClick={() => this.ajaxSendTheNumber()}>submit</button></th>
+                    </tr>
+
+                </table>
+                </div>);
+        }
+        else if(this.state.display === 'sending'){
+            setTimeout(() => {
+                this.setState({display:"sent"})
+            },2000)
+            return(
+                <div className="animated fadeIn">   
+                    <p> sending ... </p>
+                </div>
+            );
+        }
+        else if(this.state.display === 'sent'){
+            return(
+                <div className="sent animated bounceIn">   
+                    <p> Sent! </p>
+                </div>
+            );
+        }
     }
 
     handleChange(event){
@@ -315,15 +355,7 @@ class PhoneRegister extends Component{
     render(){
         return(
             <div className="PhoneRegister">   
-                
-                <label>Sign up for Text Alerts:</label>
-                <table>
-                    <tr>
-                        <th><input  placeholder="000-000-0000" maxLength="10" onChange={this.handleChange} value={this.state.numberVal}/></th>
-                        <th><button onClick={() => this.ajaxSendTheNumber()}>submit</button></th>
-                    </tr>
-
-                </table>
+                {this.screenControl()}
             </div>
         );
     }
