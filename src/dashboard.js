@@ -104,6 +104,7 @@ class Dashboard extends Component {
         <h1 className="animated fadeIn">Hey, {this.state.information[0].patient_first_name}!</h1>
         <AppointmentInfo name={this.state.information[0].patient_first_name + " "+ this.state.information[0].patient_last_name } time={this.state.information[0].display_start_time} doctor={this.state.information[0].provider_first_name + " "+ this.state.information[0].provider_last_name} date={this.date(this.state.information[0].appointment_date.substring(0,10))}/>
         {this.todayStats()}
+        <PhoneRegister />
 
       </div>
     );
@@ -248,13 +249,13 @@ class CurrentWaitTime extends Component{
 
         console.log(minutes)
         if(minutes === '0'){
-            finalTime = String(hours)+":00"+ampm
+            finalTime = String(hours)+":00"
             console.log("here")
         }
 
     
         else{
-            finalTime = String(hours)+":"+String(minutes)+ampm
+            finalTime = String(hours)+":"+String(minutes)
         }
         
         return(
@@ -273,6 +274,17 @@ class CurrentWaitTime extends Component{
                     </tr>
 
                 </table>
+            </div>
+        );
+    }
+}
+
+class PhoneRegister extends Component{
+    render(){
+        return(
+            <div className="PhoneRegister">   
+                
+                <label>Sign up for Text Alerts:</label><input type="number" placeholder="0000000000" maxLength="10"/>
             </div>
         );
     }

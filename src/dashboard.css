@@ -118,6 +118,7 @@
 
 
 button{
+    
     font-family: 'Nunito', sans-serif;
     background-color: black;
     font-size: 25px; 
@@ -132,6 +133,7 @@ button{
     -moz-box-shadow: 2px 2px 12px 4px rgba(191,187,191,1);
     box-shadow: 2px 2px 12px 4px rgba(191,187,191,1);
     margin-top: 30px;
+    margin-bottom: 30px;
     
 
 }
@@ -147,4 +149,51 @@ button:active{
 
 button:focus{
     outline: none;
+}
+
+
+.PhoneRegister{
+    text-align: center;
+    width: 80%;
+    padding: 15px;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-box-shadow: 2px 2px 12px 4px rgba(191,187,191,1);
+    -moz-box-shadow: 2px 2px 12px 4px rgba(191,187,191,1);
+    box-shadow: 2px 2px 12px 4px rgba(191,187,191,1);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-left: 15px #e67e22 solid;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+.PhoneRegister label{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 0px;
+
+}
+
+.PhoneRegister input{
+    padding: 7px;
+    border: 3px solid black;
+    border-radius: 20px;
+    width: 70%;
+    color: black;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.PhoneRegister:focus{
+    outline:none;
+}
+
+.PhoneRegister input placeholder{
+    color: #d3d3d3
 }
