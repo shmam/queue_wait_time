@@ -107,7 +107,7 @@ class Dashboard extends Component {
         <h1 className="animated fadeIn">Hey, {this.state.information[0].patient_first_name}!</h1>
         <AppointmentInfo name={this.state.information[0].patient_first_name + " "+ this.state.information[0].patient_last_name } time={this.state.information[0].display_start_time} doctor={this.state.information[0].provider_first_name + " "+ this.state.information[0].provider_last_name} date={this.date(this.state.information[0].appointment_date.substring(0,10))}/>
         {this.todayStats()}
-        <PhoneRegister />
+        <PhoneRegister patient_id={this.props.patient_id} />
 
       </div>
     );
@@ -290,6 +290,28 @@ class CurrentWaitTime extends Component{
 }
 
 class PhoneRegister extends Component{
+    constructor(props){
+        super(props);
+        this.state ={
+            numberVal: '',
+            display: 'notSent'
+        }
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    ajaxSendTheNumber(){
+        console.log(this.state.numberVal)
+        this.setState({
+            numberVal: "", 
+            display: 'sent'
+        })
+
+    }
+
+    handleChange(event){
+        this.setState({numberVal: event.target.value})
+    }
+
     render(){
         return(
             <div className="PhoneRegister">   
@@ -297,8 +319,8 @@ class PhoneRegister extends Component{
                 <label>Sign up for Text Alerts:</label>
                 <table>
                     <tr>
-                        <th><input  placeholder="000-000-0000" maxLength="10"/></th>
-                        <th><button>submit</button></th>
+                        <th><input  placeholder="000-000-0000" maxLength="10" onChange={this.handleChange} value={this.state.numberVal}/></th>
+                        <th><button onClick={() => this.ajaxSendTheNumber()}>submit</button></th>
                     </tr>
 
                 </table>
