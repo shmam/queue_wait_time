@@ -81,6 +81,19 @@ class Dashboard extends Component {
 
   buttonReload(){
       var dataObj = null; 
+      this.setState({
+          pID: this.props.patient_id,
+          information:[{
+              expected_start_time: '',
+              display_start_time: '',
+              patient_first_name: '',
+              patient_last_name: '',
+              appointment_date: '',
+              provider_first_name: '',
+              provider_last_name: '',
+              provider_id: '',
+          }],
+      })
       fetch(url + 'queue/present/appointment_information/' + this.state.pID)
       .then((resp) => resp.json())
       .then(data => {
@@ -342,7 +355,7 @@ class PhoneRegister extends Component{
         else if(this.state.display === 'sent'){
             return(
                 <div className="sent animated bounceIn">   
-                    <p> Sent! </p>
+                    <p> Subscribed! </p>
                 </div>
             );
         }
