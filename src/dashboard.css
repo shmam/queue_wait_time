@@ -178,6 +178,7 @@ button:focus{
 }
 
 .PhoneRegister input{
+    text-align: center;
     padding: 7px;
     border: 3px solid black;
     border-radius: 20px;
@@ -196,4 +197,13 @@ button:focus{
 
 .PhoneRegister input placeholder{
     color: #d3d3d3
+}
+
+.PhoneRegister button{
+    font-size: 15px;
+}
+
+.PhoneRegister th{
+    padding: 0px;
+    padding-top: 0px;
 }

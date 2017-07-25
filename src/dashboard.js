@@ -294,7 +294,14 @@ class PhoneRegister extends Component{
         return(
             <div className="PhoneRegister">   
                 
-                <label>Sign up for Text Alerts:</label><input  placeholder="0000000000" maxLength="10"/>
+                <label>Sign up for Text Alerts:</label>
+                <table>
+                    <tr>
+                        <th><input  placeholder="000-000-0000" maxLength="10"/></th>
+                        <th><button>submit</button></th>
+                    </tr>
+
+                </table>
             </div>
         );
     }
