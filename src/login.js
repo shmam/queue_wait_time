@@ -1,3 +1,7 @@
+/**
+ * Importing necessary components, modules, and style files 
+ */
+
 import React, { Component } from 'react';
 import './App.css';
 import logo from './icon.png';
@@ -5,43 +9,57 @@ import Dashboard from './dashboard.js'
 import './dashboard.css'
 
 /**
- * Title
- * Doctor dropdown 
- * type in last name -> convert to lower case -> check db 
- * button that makes the ajax call
- * Store their data and the time logged in into the session storage.
+ * Login component used to take in the patient ID, veryfy a user and then pass the necessary informaiton 
+ * onto the dasboard component
  */
-
 class Login extends Component {
 
+  /**
+   * This constructor instanceates the props, and sets blank values for the state
+   * that will be later updated with the fetch call 
+   */
   constructor(props){
     super(props);
     this.state = {
       display: 'login',
       value: '',
     }
+
+    /**
+     * Creating variables that are binded to functions that can later be used throught the component 
+     */
     this.controller=this.controller.bind(this)
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-
+  /**
+   * Triggered when the value of the input tag is changed, and triggers a state 
+   * change that would record this newly changed value 
+   * 
+   * @param {*} event 
+   */
   handleChange(event) 
   {
-    
     var val = event.target.value;
     this.setState({value: val});
     this.handleSubmit(val);
-    
   }
 
+  /**
+   * This is triggered when the form is submitted 
+   * 
+   * @param {*} value 
+   */
   handleSubmit(value) {
     this.setState({value:value});
-    
-    
-
   }
 
+
+  /**
+   * This monitors the state of the component and then displays elements 
+   * based on what the state value is. 
+   */
   controller(){
     if(this.state.display === 'login'){
       return(<div className="App">
@@ -80,7 +98,9 @@ class Login extends Component {
   }
 }
 
-
+/**
+ * The dropdown component is for the user to select what hospital that they want to log into
+ */
 class Dropdown extends Component {
   constructor() {
     super();
@@ -93,12 +113,11 @@ class Dropdown extends Component {
     return (
       <div className="">
           <select>
-            <option href="#" onClick={() => this.onClick()}><b>UNC RESARCH HOSPITAL</b></option>
-            <option href="#"  ><b>DUKE MEDICAL FACILITY</b></option>
+            <option href="#" ><b>UNC RESARCH HOSPITAL</b></option>
+            <option href="#" ><b>DUKE MEDICAL FACILITY</b></option>
             <option href="#" ><b>VT BOJANGLE CENTER</b></option>
-          </select> {
-          }
-      </div> // end of dropdown div
+          </select> 
+      </div> 
     );
   }
  

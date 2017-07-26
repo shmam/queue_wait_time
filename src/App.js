@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Login from './login.js'
 
 
-
+/**
+ * Default component that is rendered in the entry point of the app
+ */
 class App extends Component {
 
   render() {
