@@ -1,6 +1,5 @@
 #  Patient Wait Time Mobile App
 
-![Optumistics 1](http://i.imgur.com/MHSb9aY.png "Optumistics Mobile App")
- 
-
-![Optumistics 1](http://i.imgur.com/mV3ADtg.png "Optumistics Mobile App")
+Login Portal          |  User Dashboard
+:-------------------------:|:-------------------------:
+![](http://i.imgur.com/sgp7hGz.png)  |  ![](http://i.imgur.com/WRGbiC1.png)
