@@ -22,6 +22,7 @@ class Dashboard extends Component {
               provider_first_name: '',
               provider_last_name: '',
               provider_id: '',
+              appointment_id: '',
           }],
       }
   }
@@ -120,7 +121,7 @@ class Dashboard extends Component {
         <h1 className="animated fadeIn">Hey, {this.state.information[0].patient_first_name}!</h1>
         <AppointmentInfo name={this.state.information[0].patient_first_name + " "+ this.state.information[0].patient_last_name } time={this.state.information[0].display_start_time} doctor={this.state.information[0].provider_first_name + " "+ this.state.information[0].provider_last_name} date={this.date(this.state.information[0].appointment_date.substring(0,10))}/>
         {this.todayStats()}
-        <PhoneRegister patient_id={this.props.patient_id} />
+        <PhoneRegister patient_id={this.props.patient_id} appointment_id={this.state.information[0].appointment_id}/>
 
       </div>
     );
@@ -319,6 +320,19 @@ class PhoneRegister extends Component{
                 numberVal: "", 
                 display: 'sending'
             })
+            console.log(this.props)
+            fetch(url + 'queue/update/text_alert/'+String(this.props.appointment_id)+'/'+this.props.patient_id+'/'+this.state.numberVal, {
+                method: "POST",
+                //body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                credentials: "same-origin"
+                }).then(function(response) {
+                    //console.log(response)
+                }, function(error) {
+                    //console.log(error)
+            });
         }
         else{
 
@@ -378,3 +392,6 @@ class PhoneRegister extends Component{
 
 
 export default Dashboard;
+
+
+// queue/update/text_alert/:appointment_id/:patient_id/:phone_number
